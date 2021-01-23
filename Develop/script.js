@@ -10,6 +10,9 @@ var btn3 = document.createElement("Button");
 var btn4 = document.createElement("Button");
 var btnDiv = document.querySelector("myDiv");
 
+var score = 0;
+var questionCounter = 0;
+
 //Quiz Introduction Page; create a function that starts the webpage with this DOM
 //var introPage = document.querySelector("#");
 
@@ -36,13 +39,13 @@ function startQuiz() {
         quizPage();
     });
 }
+
 //Quiz Pages
 //var quizPage = document.querySelector("#");
 function quizPage() {
     startBtn.style.display = "none";
+
     h2El.innerText = triviaArr[0].question;
-    //document.getElementById("h2").innerHTML = triviaArr[];
-    console.log("Question 1");
 
     btn1.innerHTML = triviaArr[0].answers[0];
     myDiv.appendChild(btn1);
@@ -55,7 +58,31 @@ function quizPage() {
 
     btn4.innerHTML = triviaArr[0].answers[3];
     myDiv.appendChild(btn4);
+
+    //insert click function determining if choice is correct or not
+
+    btn1.addEventListener("click", function (event) {
+        console.log("I am clicked");
+    });
+    btn2.addEventListener("click", function (event) {
+        console.log("I am clicked");
+    });
+    btn3.addEventListener("click", function (event) {
+        console.log("I am clicked");
+    });
+    btn4.addEventListener("click", function (event) {
+        console.log("I am clicked");
+    });
+
+    if (triviaArr.answers[i] != triviaArr.correctAnswer[i]) {
+
+    }
+
 }
+
+//Function for correct answer
+//function correct() {
+// }
 
 //Final Score Page
 //var scorePage = document.querySelector("#");
@@ -91,18 +118,17 @@ var triviaArr = [
     {
         question: "How many lanes does an olympic standard swimming pool have?",
         answers: ["5", "6", "7", "8"],
-        correctAnswer: "8"
+        correctAnswer: [3]
 
     },
     {
         question: "What city is the capital of China?",
         answers: ["Hong Kong", "Beijing", "Pyeong Yang", "Tokyo"],
-        correctAnswer: "Beijing",
+        correctAnswer: [1]
     },
     {
         Question: "What is Santa's name in France?",
         answers: ["Homme Araignée", "Pere Noel", "Omelette du Fromage", "Croissant"],
-        correctAnswer: "Pere Noel",
+        correctAnswer: [2]
     }
 ]
-
