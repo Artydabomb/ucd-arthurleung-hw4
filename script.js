@@ -13,11 +13,27 @@ var btnDiv = document.querySelector("myDiv");
 var score = 0;
 var questionCounter = 0;
 
-//Quiz Introduction Page; create a function that starts the webpage with this DOM
-//var introPage = document.querySelector("#");
+//Creating questions for the quiz
+var triviaArr = [
+    {
+        question: "How many lanes does an olympic standard swimming pool have?",
+        answers: ["5", "6", "7", "8"],
+        correctAnswer: [3]
+
+    },
+    {
+        question: "What city is the capital of China?",
+        answers: ["Hong Kong", "Beijing", "Pyeong Yang", "Tokyo"],
+        correctAnswer: [1]
+    },
+    {
+        question: "What is Santa's name in France?",
+        answers: ["Homme Araignée", "Pere Noel", "Omelette du Fromage", "Croissant"],
+        correctAnswer: [2]
+    }
+]
 
 // Click event to start quiz
-
 
 function quizInit() {
     //document.getElementById("h1").innerHTML = "Coding Quiz Challenge!"
@@ -45,40 +61,27 @@ function startQuiz() {
 function quizPage() {
     startBtn.style.display = "none";
 
-    h2El.innerText = triviaArr[0].question;
-
-    btn1.innerHTML = triviaArr[0].answers[0];
-    myDiv.appendChild(btn1);
-
-    btn2.innerHTML = triviaArr[0].answers[1];
-    myDiv.appendChild(btn2);
-
-    btn3.innerHTML = triviaArr[0].answers[2];
-    myDiv.appendChild(btn3);
-
-    btn4.innerHTML = triviaArr[0].answers[3];
-    myDiv.appendChild(btn4);
-
-    //insert click function determining if choice is correct or not
-
-    btn1.addEventListener("click", function (event) {
-        console.log("I am clicked");
-    });
-    btn2.addEventListener("click", function (event) {
-        console.log("I am clicked");
-    });
-    btn3.addEventListener("click", function (event) {
-        console.log("I am clicked");
-    });
-    btn4.addEventListener("click", function (event) {
-        console.log("I am clicked");
-    });
-
-    if (triviaArr.answers[i] != triviaArr.correctAnswer[i]) {
-
+    for (let i = 0; i < triviaArr.length; i++) {
+        console.log(triviaArr);
     }
-
 }
+
+/*h2El.innerText = triviaArr[0].question;
+
+btn1.innerHTML = triviaArr[0].answers[0];
+myDiv.appendChild(btn1);
+
+btn2.innerHTML = triviaArr[0].answers[1];
+myDiv.appendChild(btn2);
+
+btn3.innerHTML = triviaArr[0].answers[2];
+myDiv.appendChild(btn3);
+
+btn4.innerHTML = triviaArr[0].answers[3];
+myDiv.appendChild(btn4);
+*/
+
+//insert click function determining if choice is correct or not
 
 //Function for correct answer
 //function correct() {
@@ -113,22 +116,4 @@ function countdown() {
     }, 1000);
 }
 */
-//Creating questions for the quiz
-var triviaArr = [
-    {
-        question: "How many lanes does an olympic standard swimming pool have?",
-        answers: ["5", "6", "7", "8"],
-        correctAnswer: [3]
 
-    },
-    {
-        question: "What city is the capital of China?",
-        answers: ["Hong Kong", "Beijing", "Pyeong Yang", "Tokyo"],
-        correctAnswer: [1]
-    },
-    {
-        Question: "What is Santa's name in France?",
-        answers: ["Homme Araignée", "Pere Noel", "Omelette du Fromage", "Croissant"],
-        correctAnswer: [2]
-    }
-]
