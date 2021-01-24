@@ -8,7 +8,8 @@ var btn1 = document.createElement("Button");
 var btn2 = document.createElement("Button");
 var btn3 = document.createElement("Button");
 var btn4 = document.createElement("Button");
-var btnDiv = document.querySelector("myDiv");
+var btnDiv = document.querySelector("#myDiv");
+var form = document.createElement("Form");
 
 var score = 0;
 var questionCounter = 0;
@@ -18,18 +19,18 @@ var triviaArr = [
     {
         question: "How many lanes does an olympic standard swimming pool have?",
         answers: ["5", "6", "7", "8"],
-        correctAnswer: [3]
+        correctAnswer: "8"
 
     },
     {
         question: "What city is the capital of China?",
         answers: ["Hong Kong", "Beijing", "Pyeong Yang", "Tokyo"],
-        correctAnswer: [1]
+        correctAnswer: "Beijing"
     },
     {
         question: "What is Santa's name in France?",
         answers: ["Homme Araignée", "Pere Noel", "Omelette du Fromage", "Croissant"],
-        correctAnswer: [2]
+        correctAnswer: "Pere Noel"
     }
 ]
 
@@ -42,7 +43,7 @@ function quizInit() {
     h2El.innerHTML = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score by ten seconds!";
     h2El.style.textAlign = "center";
     startBtn.innerHTML = "Let's Start!";
-    myDiv.appendChild(startBtn);
+    startDiv.appendChild(startBtn);
     startQuiz();
 };
 
@@ -56,39 +57,60 @@ function startQuiz() {
     });
 }
 
+
 //Quiz Pages
 //var quizPage = document.querySelector("#");
+
+btnDiv.addEventListener("click", function (event) {
+    console.log(event.target.textContent);
+    if (event.target.textContent == triviaArr[questionCounter - 1].correctAnswer) {
+        console.log("Correct!");
+        score += 10;
+        console.log(score);
+    } else {
+        console.log("Incorrect...")
+        score -= 10;
+        console.log(score);
+    }
+    quizPage();
+});
+
 function quizPage() {
     startBtn.style.display = "none";
 
-    for (let i = 0; i < triviaArr.length; i++) {
-        console.log(triviaArr);
+    if (questionCounter < 3) {
+        h2El.innerText = triviaArr[questionCounter].question;
+
+        btn1.innerHTML = triviaArr[questionCounter].answers[0];
+        myDiv.appendChild(btn1);
+
+        btn2.innerHTML = triviaArr[questionCounter].answers[1];
+        myDiv.appendChild(btn2);
+
+        btn3.innerHTML = triviaArr[questionCounter].answers[2];
+        myDiv.appendChild(btn3);
+
+        btn4.innerHTML = triviaArr[questionCounter].answers[3];
+        myDiv.appendChild(btn4);
+
+        questionCounter++;
+    } else {
+        finalScore();
     }
+
 }
 
-/*h2El.innerText = triviaArr[0].question;
-
-btn1.innerHTML = triviaArr[0].answers[0];
-myDiv.appendChild(btn1);
-
-btn2.innerHTML = triviaArr[0].answers[1];
-myDiv.appendChild(btn2);
-
-btn3.innerHTML = triviaArr[0].answers[2];
-myDiv.appendChild(btn3);
-
-btn4.innerHTML = triviaArr[0].answers[3];
-myDiv.appendChild(btn4);
-*/
-
-//insert click function determining if choice is correct or not
-
-//Function for correct answer
-//function correct() {
-// }
-
 //Final Score Page
-//var scorePage = document.querySelector("#");
+function finalScore() {
+    myDiv.style.display = "none";
+
+    h1El.innerHTML = "Quiz Complete!"
+    h1El.style.textAlign = "center";
+    h2El.innerHTML = "Your final score is " + score + " !";
+    h2El.style.textAlign = "center";
+
+    myDiv.appendChild(form);
+}
 
 //High Score Page
 //var highScorePage = document.querySelector("highScorePage");
@@ -99,7 +121,7 @@ myDiv.appendChild(btn4);
 // Define start conditions (I want to include score keeping for correct & incorrect answers, but how??)
 
 //Use 'setInterval()' to create countdown for quiz. Timer will restart when question answered, unanswered or out of time.
-/*
+
 function countdown() {
     var timeLeft = 3;
     var timeInterval = setInterval(function () {
@@ -115,5 +137,5 @@ function countdown() {
         }
     }, 1000);
 }
-*/
+
 
